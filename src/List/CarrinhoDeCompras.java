@@ -15,11 +15,13 @@ public class CarrinhoDeCompras {
     }
 
     public void removerItem(String nome){
+        List<Item> itensParaRemover = new ArrayList<>();
         for (Item item : listaItens){
             if (item.getNome().equalsIgnoreCase(nome)){
-                listaItens.remove(item);
+                itensParaRemover.add(item);
             }
         }
+        listaItens.removeAll(itensParaRemover);
     }
 
     public double calcularValorTotal(){
@@ -38,6 +40,7 @@ public class CarrinhoDeCompras {
         CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
         carrinhoDeCompras.adicionarItem("Teclado", 99.9, 2);
         carrinhoDeCompras.adicionarItem("mouse", 100, 1);
+        carrinhoDeCompras.removerItem("mouse");
         carrinhoDeCompras.exibirItens();
         System.out.println(carrinhoDeCompras.calcularValorTotal());
     }
